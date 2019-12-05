@@ -1,0 +1,272 @@
+<html>
+	<script   src="http://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.2.3/math.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+	<style type='text/css'>
+		
+		.fill{
+			background-color: black;
+		}
+		
+		#vis_table{
+			background-color: white;
+		}
+		
+		#vis_table td{
+			height: 30px;
+			width: 30px;
+			border: 1px solid #666666;
+			
+		}
+		
+	</style>
+
+	<script>
+		
+		/**
+		 * Randomize array element order in-place.
+		 * Using Durstenfeld shuffle algorithm.
+		 */
+		function shuffleArray(array) {
+			for (var i = array.length - 1; i > 0; i--) {
+				var j = Math.floor(Math.random() * (i + 1));
+				var temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}
+			return array;
+		}
+		
+		/**
+		 * Returns a random integer between min (inclusive) and max (inclusive)
+		 * Using Math.round() will give you a non-uniform distribution!
+		 */
+		function randint(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+		
+		var computed_overlaps = [];
+		
+		var track_static = [0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0];
+		var track =        [0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]; //  0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0];
+		var segments = [1, 1, 1, 1, 1, 1, 1];
+		var inter = [2, 3, 2, 4, 2, 1, 4, 5]; //, 2, 4, 6, 5];
+		
+		
+		// Track is a list of 0s and 1s
+		function visualize(t){
+			
+			// First fill the static_track
+			$("#track_static").html("");
+			for(var i = 0; i < track_static.length; i++){
+				if(track_static[i] == 0){
+					$("#track_static").append("<td></td>");
+				}
+				else{
+					$("#track_static").append("<td class='fill'></td>");	
+				}
+			}
+			
+			$("#spacing").attr("colspan", track_static.length);
+			
+			// Fill the other
+			$("#track2").html("");
+			for(var i = 0; i < t.length; i++){
+				if(t[i] == 0){
+					$("#track2").append("<td></td>");
+				}
+				else{
+					$("#track2").append("<td class='fill'></td>");	
+				}
+			}
+			
+			// Also compute the overlap between these two tracks here
+			var o = overlap(t);
+			$("#overlap").html("<p>Overlap: <b>" + o + " base pairs</b>");
+			
+		}
+				
+		function overlap(t){
+			// computes overlap between static track and t
+			var o = 0;
+			for(var i = 0; i < t.length; i++){
+				if(t[i] == 1 && t[i] == track_static[i]){
+					o++;
+				}
+			}
+			
+			computed_overlaps.push(o);
+			draw_histogram();
+			
+			return o;
+		}
+
+
+		function generate_random(track, strategy){
+			
+		
+			if(strategy == "shuffle_points"){
+				return shuffleArray(track.slice());
+			}
+			else if(strategy == "preserve_segments"){
+				var new_track = new Array(track.length).fill(0);
+				segs = shuffleArray(segments.slice());
+				console.log(segs);
+				while(segs.length > 0){
+					var n = segs.pop();
+					console.log("n: " + n);
+					// Try to fit this into the track somewhere
+					var pos = 0;
+					var n_tries = 0;
+					while(true){
+						pos = randint(0, new_track.length);
+						console.log("Try position: " + pos);
+						// Try to put it here
+						if(pos + n >= new_track.length){
+							continue; // Will go outside array
+						}
+						
+						var cont = true;
+						for(var i = pos; i < pos + n; i++){
+							if(new_track[i] == 1){ // We crashed with another track
+								cont = false;
+								break;
+							}
+						}
+						if(!cont){
+							n_tries++
+							if(n_tries > 100){
+								break;
+							}
+							continue;
+						}	
+						break;
+					}
+					
+					// Position this segment here:
+					for(var i = pos; i < pos + n; i++){
+						new_track[i] = 1;
+					}
+				}
+				return new_track;
+						
+						
+			}
+			else if(strategy == "preserve_all"){
+				var new_track = Array();
+				segs = shuffleArray(segments.slice());
+				inters = shuffleArray(inter.slice());
+					
+				while(segs.length > 0 || inters.length > 0){
+					if(inters.length > 0){
+						// Fill with random 
+						var n = inters.pop();
+						for(var i = 0; i < n; i++){
+							new_track.push(0);
+						}
+					}
+					if(segs.length > 0){
+						var n = segs.pop();
+						for(var i = 0; i < n; i++){
+							new_track.push(1);
+						}
+					}
+				}
+				return new_track;
+				
+			}
+			
+		}
+		
+		function draw_histogram(){
+			var x = [];
+			for (var i = 0; i < 500; i ++) {
+				x[i] = Math.random();
+			}
+			x = computed_overlaps;
+
+			var trace = {
+				x: x,
+				type: 'histogram',
+			  };
+			var data = [trace];
+			Plotly.newPlot('myDiv', data);
+			
+			var average = math.sum(computed_overlaps) / computed_overlaps.length;
+			
+			$("#stats").html("<p>Mean: <b>" + average.toFixed(2) + "</b>, standard deviation: <b>" + math.std(computed_overlaps).toFixed(2) + "</b></p>");
+		}
+		
+		$(document).ready(function(){
+			visualize(track);
+		});
+		
+		</script>
+
+
+<body>
+	
+	<div class="container" style='background-color: #eeeeee; margin-top: 50px; padding: 40px;'>
+		<h1>Hypothesis test with Monte Carlo, example in IN-BIOS9000</h1>
+		<hr>
+		<h4>Claim (alternative hypothesis)</h4>
+		<p>The two tracks (visualized below) are associated, i.e. they co-occur more than what would be natural (expected by chance).</p>
+		<hr>
+		
+		<h4>Null hypothesis</h4>
+		<p>The two tracks are not associated</p>
+		<hr>
+		<h4>Null model</h4>
+		<p>The two tracks are <i>randomly</i> distributed by shuffling either the covered bases, segments and or segments and inter-segments.
+		
+		<p>Click to pick a sample from the null-model:</p>
+		
+		
+		<div class='visualization'>
+			
+			<table border='1' id='vis_table'>
+				<tr id='track_static'>
+					
+				</tr>
+				
+				<tr id='track2'>
+					
+				</tr>
+				
+			</table>
+		</div>
+		<div id='overlap' style='background-color: white; border: 1px dotted gray; border-radius: 2px; width: 200px; padding: 10px; margin-top: 10px;'>
+		
+		</div>
+		
+		<br><br>
+		<input type='button' class='btn btn-default' onclick="visualize(generate_random(track, 'shuffle_points'));" value='Randomize by shuffling base pairs'>
+		<!--<input type='button' class='btn btn-default' onclick="visualize(generate_random(track, 'preserve_segments'));" value='Randomize by shuffling segments'>-->
+		<input type='button' class='btn btn-default' onclick="visualize(generate_random(track, 'preserve_all'));" value='Randomize by preserving inter-point distances'>
+		
+		
+		
+		<div id="myDiv" style='width: 500px; margin-top: 40px;'></div>
+		
+		<div id='stats' style='margin-top: 20px'></div>
+		
+		
+		
+		
+	</div>
+		
+		
+		
+	</div>
+
+</body>
