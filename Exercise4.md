@@ -198,7 +198,7 @@ print(n_inside)
 </details>
 
 
-#4f: Bonus task
+## 4f: Bonus task
 **Task: Run the `count_snps_inside_regions` function many times with random SNP positions. Draw a histogram of all the counts.**
 
 <details>
