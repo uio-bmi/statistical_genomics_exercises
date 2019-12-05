@@ -3,6 +3,8 @@
 In this exercise, we will investigate how many of SNPs associated with Multiple Sclerosis are positioned inside open chromatin areas. 
 In this task, we will only look at SNPs and open chromatin on chromosome 6 (to make things more simple). 
 
+A full solution to this exercise is [available here](https://github.com/uio-bmi/statistical_genomics_exercises/blob/master/exercise4_solution.py). Solutions to each parts are available under each part below. 
+
 ## a: Read the SNPs
 [This BED file](https://raw.githubusercontent.com/uio-bmi/statistical_genomics_exercises/master/ms_associated_snps_chr6.bed) 
 contains the SNPs we will investigate. Each line represents one SNP (first column is chromosome and second column is the position).
