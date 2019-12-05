@@ -4,7 +4,8 @@ In this exercise, we will investigate how many of SNPs associated with Multiple 
 In this task, we will only look at SNPs and open chromatin on chromosome 6 (to make things more simple). 
 
 ## a: Read the SNPs
-[This BED-file]() contains the SNPs we will investigate. Each line represents one SNP (first column is chromosome and second column is the position).
+[This BED file](https://raw.githubusercontent.com/uio-bmi/statistical_genomics_exercises/master/ms_associated_snps_chr6.bed) 
+contains the SNPs we will investigate. Each line represents one SNP (first column is chromosome and second column is the position).
 
 We want to read this file and put all the SNP positions in a Python list so that we end up with a list of numbers. You can ignore the chromosome, since all SNPs are on chromosome 6.
 
@@ -35,6 +36,8 @@ print("Number of snps: ", len(snp_position))
 
 
 ## b: Read the open chromatin regions
+Download [this BED file](https://raw.githubusercontent.com/uio-bmi/statistical_genomics_exercises/master/open_chromatin_chr6.bed) 
+with open chromatin regions.
 Similarly, we want to read the open chromatin regions into a list. But since these are segments and not points, we want to store
 both the start and end coordinate of each region. We can do this by representing each open chromatin segment with a tuple. 
 For instance, if there are two open chromatin regions, our list could look like this:
