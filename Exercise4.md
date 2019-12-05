@@ -10,7 +10,7 @@ We want to read this file and put all the SNP positions in a Python list so that
 
 **Task: Write a simple Python program that reads this file and creates a list with all the SNP positions. How many SNPs are there?**
 
-PS: You can create an empty list with `my_list = []` and append an position to that list with `my_list.append(position)`.
+PS: You can create an empty list with `my_list = []` and append a position to that list with `my_list.append(position)`.
 
 <details>
 <summary>View solution</summary>
