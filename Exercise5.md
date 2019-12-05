@@ -13,6 +13,6 @@ Set type to *bed* and genome to *hg19*.
     * As the second track, select the open chromatin regions
 5. Try to figure out the rest for yourself from here, but choose "Located inside?" as hypothesis
 
-PS: Select random seed 0 and *Quick and Rough" 
+PS: Select random seed 0 and *Quick and Rough* as "MCFDR sampling depth".
 
 If time, re-run with different choices for null model.
