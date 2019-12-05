@@ -90,8 +90,7 @@ for segment in open_chromatin_segments:
     start = segment[0]
     end = segment[1]
     
-    n_basepairs_covered += start - end
-    
+    n_basepairs_covered += end - start 
 print("Number of base pairs covered: ", n_basepairs_covered)
 ```
 
@@ -107,7 +106,7 @@ Some skeleton-code that can be used to get started:
 ```python
 n_snps_inside_open_chromatin = 0
 
-for open_chromatin_region in open_chromatin_regions:
+for open_chromatin_region in open_chromatin_segments:
     start = open_chromatin_region[0]
     end = open_chromatin_region[1]
     for snp in snp_positions:
@@ -120,7 +119,7 @@ for open_chromatin_region in open_chromatin_regions:
 ```python
 n_snps_inside_open_chromatin = 0
 
-for open_chromatin_region in open_chromatin_regions:
+for open_chromatin_region in open_chromatin_segments:
     start = open_chromatin_region[0]
     end = open_chromatin_region[1]
     for snp in snp_positions:
@@ -128,7 +127,7 @@ for open_chromatin_region in open_chromatin_regions:
         if snp >= start and snp < end:
             n_snps_inside_open_chromatin += 1
 
-print("Number of SNPs inside open chromatin regions: ", n_snps_inside_open_chromatin))
+print("Number of SNPs inside open chromatin regions: ", n_snps_inside_open_chromatin)
 ```
 </details>
 
@@ -140,13 +139,13 @@ The benefit of having a function is that we then can easily re-use that piece of
 
 **Task: Create a function with the code from exercise 4c. The function has two arguments (snp_positions and open_chromatin_regions):**
 ```python
-def count_snps_inside_regions(snp_positions, open_chromatin_regions):
+def count_snps_inside_regions(snp_positions, open_chromatin_segments):
     # Your code here...
     
     return n_snps_inside_open_chromatin
     
 # Call the function like this:
-n_inside = count_snps_inside_regions(snp_positions, open_chromatin_regions)
+n_inside = count_snps_inside_regions(snp_positions, open_chromatin_segments)
 print("Number of snps inside open chromatin regions: ", n_inside)
 ```
 
@@ -154,10 +153,10 @@ print("Number of snps inside open chromatin regions: ", n_inside)
 <summary>View full solution</summary>
 
 ```python
-def count_snps_inside_regions(snp_positions, open_chromatin_regions):
+def count_snps_inside_regions(snp_positions, open_chromatin_segments):
     n_snps_inside_open_chromatin = 0
 
-    for open_chromatin_region in open_chromatin_regions:
+    for open_chromatin_region in open_chromatin_segments:
         start = open_chromatin_region[0]
         end = open_chromatin_region[1]
         for snp in snp_positions:
@@ -168,7 +167,7 @@ def count_snps_inside_regions(snp_positions, open_chromatin_regions):
     return n_snps_inside_open_chromatin
     
 # Call the function like this:
-n_inside = count_snps_inside_regions(snp_positions, open_chromatin_regions)
+n_inside = count_snps_inside_regions(snp_positions, open_chromatin_segments)
 print("Number of snps inside open chromatin regions: ", n_inside)
 ```
 </details>
@@ -191,7 +190,7 @@ How many random SNPs are within the open chromatin regions? You can try running 
 from numpy.random import randint
 random_positions = randint(0, 171115067, 45)
 
-n_inside = count_snps_inside_regions(random_positions, open_chromatin_regions)
+n_inside = count_snps_inside_regions(random_positions, open_chromatin_segments)
 print(n_inside)
 ```
 
@@ -211,7 +210,7 @@ counts = []
 
 for i in range(0, 100):
     random_positions = randint(0, 171115067, 45)
-    count = count_snps_inside_regions(random_positions, open_chromatin_regions)
+    count = count_snps_inside_regions(random_positions, open_chromatin_segments)
     counts.append(count) 
     
 # Plot the histogram
