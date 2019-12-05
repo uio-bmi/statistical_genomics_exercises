@@ -3,7 +3,7 @@
 In this exercise, we will investigate how many of SNPs associated with Multiple Sclerosis are positioned inside open chromatin areas. 
 In this task, we will only look at SNPs and open chromatin on chromosome 6 (to make things more simple). 
 
-# a: Read the SNPs
+## a: Read the SNPs
 [This BED-file]() contains the SNPs we will investigate. Each line represents one SNP (first column is chromosome and second column is the position).
 
 We want to read this file and put all the SNP positions in a Python list so that we end up with a list of numbers. You can ignore the chromosome, since all SNPs are on chromosome 6.
@@ -34,7 +34,7 @@ print("Number of snps: ", len(snp_position))
 </details> 
 
 
-# b: Read the open chromatin regions
+## b: Read the open chromatin regions
 Similarly, we want to read the open chromatin regions into a list. But since these are segments and not points, we want to store
 both the start and end coordinate of each region. We can do this by representing each open chromatin segment with a tuple. 
 For instance, if there are two open chromatin regions, our list could look like this:
@@ -98,7 +98,7 @@ print("Number of base pairs covered: ", n_basepairs_covered)
 </details>
 
 
-# c
+## 4c: Count SNPs inside open chromatin
 **Task: Write python code to find out how many of the SNPs are within open chromatin regions?**
 
 *PS:* The easiest way to do this is by using two for-loops (one inside the other). The first for-loop can go throuh all the open chromatin regions, and for each region a new for-loop goes through all the SNPs and checks whether the SNP is inside the region or not.
