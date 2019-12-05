@@ -179,7 +179,7 @@ print("Number of snps inside open chromatin regions: ", n_inside)
 
 
 ## 4e: Run the function with random SNP position
-With Python, we can easily draw random numbers. For instnace, we can draw 45 random positions on chromosome 6 with the following code (not that `171115067` is the size of chromosome 6):
+With Python, we can easily draw random numbers. For instnace, we can draw 45 random positions on chromosome 6 with the following code (note that `171115067` is the size of chromosome 6):
 ```python
 from numpy.random import randint
 random_positions = randint(0, 171115067, 45)
