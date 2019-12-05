@@ -10,6 +10,27 @@ We want to read this file and put all the SNP positions in a Python list so that
 
 Write a simple Python program that reads this file and creates a list with all the SNP positions.
 
+PS: You can create an empty list with `my_list = []` and append an position to that list with `my_list.append(position)`.
+
 <details>
-<summary>Test</summary>
+<summary>View solution</summary>
+
+```python
+# Initialize an empty list that we will use to store the positions
+snp_positions = []
+
+# Open the file and go through the lines
+snps_file = open("ms_associated_snps.bed")
+for line in snps_file:
+    # Split the line and get the SNP position
+    splitted_line = line.split()
+    snp_position = splitted_line[1]
+    
+    # Add this position to the list
+    snp_positions.append(snp_position)
+
+print("Number of snps: ", len(snp_position))
+```
+
+
 </details> 
