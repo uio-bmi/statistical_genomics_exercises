@@ -3,8 +3,8 @@
 1. Go to the Genomic HyperBrowser (https://hyperbrowser.uio.no). Register a new user if you want to keep what you do.
     * Click on the Advanced mode tab on the home screen to make sure you are in "Advanced mode". A menu will appear on the left.
 2. We now want to work with SNPs and open chromatin from the whole genome. Download these two files:
-    * [SNPs associated with Multiple Sclerosis]()
-    * [Open chromatin for the cell we want to investigate]()
+    * [SNPs associated with Multiple Sclerosis](https://github.com/uio-bmi/statistical_genomics_exercises/blob/master/ms_associated_snps.bed)
+    * [Open chromatin for the cell we want to investigate](https://github.com/uio-bmi/statistical_genomics_exercises/blob/master/open_chromatin_th1.bed)
 3. Upload these files to the genomic hyperbrowser by using clicking the upload icon in the top right of the left menu. *Get data* tool. You will find this tool in the left menu.
 Set type to *bed* and genome to *hg19*.
     * After upload you should see two files appearing on the right. They will turn green when finished uploading.
