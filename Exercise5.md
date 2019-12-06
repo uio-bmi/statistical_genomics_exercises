@@ -5,8 +5,8 @@
 2. We now want to work with SNPs and open chromatin from the whole genome. Download these two files:
     * [SNPs associated with Multiple Sclerosis](https://raw.githubusercontent.com/uio-bmi/statistical_genomics_exercises/master/ms_associated_snps.bed)
     * [Open chromatin for the cell we want to investigate](https://raw.githubusercontent.com/uio-bmi/statistical_genomics_exercises/master/open_chromatin_th1.bed)
-3. Upload these files to the genomic hyperbrowser by using clicking the upload icon in the top right of the left menu. *Get data* tool. You will find this tool in the left menu.
-Set type to *bed* and genome to *hg19*.
+3. Upload these files to the genomic hyperbrowser by clicking the upload icon in the top right of the left menu.
+    * Set type to *bed* and genome to *hg19*.
     * After upload you should see two files appearing on the right. They will turn green when finished uploading.
 4. Go to Statistical analysis of tracks -> Analyze genomic track, in the left menu 
     * As the first track select the SNPs by choosing *From history*.
