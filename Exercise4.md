@@ -32,7 +32,7 @@ for line in snps_file:
     # Add this position to the list
     snp_positions.append(snp_position)
 
-print("Number of snps: ", len(snp_position))
+print("Number of snps: ", len(snp_positions))
 ```
 </details> 
 
