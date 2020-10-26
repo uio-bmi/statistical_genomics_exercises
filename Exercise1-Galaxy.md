@@ -3,7 +3,7 @@
 In this exercise we will use Galaxy hosted on [http://usegalaxy.org](http://usegalaxy.org).
 
 ### Before you start
-* Open usegalaxy.org in you web browser and register a new user by click **Login or register** in the top toolbar. This is not strictly necessary, but will make you history be saved.
+* Open [usegalaxy.org](https://usegalaxy.org) in you web browser and register a new user by click **Login or register** in the top toolbar. This is not strictly necessary, but will make you history be saved.
 
 ## 1: Upload data
 Most analyses in Galaxy starts out with some dataset that goes as input to a tool.
