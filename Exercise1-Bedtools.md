@@ -45,7 +45,7 @@ Use the `wc` command again to answer this question.
 
 If we want to find out how much of the genome is covered by the open chromatin regions, Bedtoos  does not have a command to find this easily. So we will find that in this exercise, but this  is pretty straightforward to answer using Python (see the [Python exercise](Exercise1-Python.md)).
 
-## 6: How many SNPs are inside open chromatin regions?
+## 5: How many SNPs are inside open chromatin regions?
 Finally, we will be using Bedtools. Answering this question using bedtools is as simple as:
 
 ```
@@ -55,7 +55,7 @@ bedtools intersect -a ms_associated_snps.bed -b open_chromatin_th1.bed > interse
 Running the above will write the intersecting regions of the file specified by `-a` to intersecting_regions.bed.
 
 
-## 7: Bonus question
+## 6: Bonus question
 Assume you want to find all open chromatin regions that have one or more SNPs inside, and only report those regions once.
 
 Are you able, by reading the [bedtools intersect documentation](https://bedtools.readthedocs.io/en/latest/content/tools/intersect.html) to find out how to do that?

@@ -19,5 +19,5 @@ This exercise builds on the previous exercise. We now want to investigate whethe
 ## Exercise 3: Multi-track analysis
 We will now take the Multiple Sclerosis analysis one step further by performing the same analysis as in Exercise 2, but look at co-occurence between the SNPs and multiple tracks for open chromatin in different cells. Rather than investigating whether or not the association is significant for any of the tracks, we want to rank the tracks depending on how strong the association is.
 
-* [Exercise using Bedtools](Exercise3-Bedtools)
-* Exercise using The Genomic Hyperbrowser / Galaxy
+* [Exercise using Bedtools](Exercise3-Bedtools.md)
+* [Exercise using The Genomic Hyperbrowser](Excercise3-Hyperbrowser.md)
