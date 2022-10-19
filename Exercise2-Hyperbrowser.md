@@ -13,7 +13,7 @@ After that, you should see a menu to the left and a history column to the right.
 Register a user similarly to how you did this on Galaxy.
 
 ## 2: Upload data
-Upload the two same files from the [Galaxy exercise](Exercise1-Galaxy) again.
+Upload the two same files from the [Galaxy exercise](Exercise1-Galaxy.md) again.
 
 Remember to set type to **bed** and genome to **hg19**.
 
