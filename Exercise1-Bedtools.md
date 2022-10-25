@@ -51,7 +51,7 @@ wc --help
 ## 4: How many open chromatin regions are there?
 Use the `wc` command again to answer this question.
 
-If we want to find out how much of the genome is covered by the open chromatin regions, Bedtoos  does not have a command to find this easily. So we will find that in this exercise, but this  is pretty straightforward to answer using Python (see the [Python exercise](Exercise1-Python.md)).
+If we want to find out how much of the genome is covered by the open chromatin regions, Bedtools  does not have a command to find this easily. So we will not find that in this exercise, but this  is pretty straightforward to answer using Python (see the [Python exercise](Exercise1-Python.md)).
 
 ## 5: How many SNPs are inside open chromatin regions?
 Finally, we will be using Bedtools. Answering this question using bedtools is as simple as:
