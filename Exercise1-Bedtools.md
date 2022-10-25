@@ -5,7 +5,9 @@
 Log in to the server, create a folder to work in:
 
 ```
-ssh yourusername@bioint01.hpc.uio.no
+ssh ssh ec-username@fox.educloud.no
+# Go to an interactive node
+ssh int-1
 # Make sure you are in your home directory:
 cd
 # Make a directory for doing the exercises, e.g.
@@ -15,8 +17,14 @@ mkdir exercise1
 cd exercise1
 ```
 
+Load bedtools:
+```
+module load BEDTools/2.30.0-GCC-11.2.0
+```
+
 Check that Bedtools is working by just typing bedtools. If everything works, you will see a list of possible subcommands:
 ```
+
 bedtools
 ```
 

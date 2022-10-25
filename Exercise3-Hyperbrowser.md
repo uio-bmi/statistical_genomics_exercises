@@ -31,7 +31,7 @@ Before you continue, also make sure you have the SNP bed file from the previous 
 ## 2: Compute the similarity between the SNPs and all the genomic tracks
 * Go to **Statistical analysis of GSuites** in the left menu and click on **Determine GSuite tracks coinciding with a target track**
 * Select the SNPs as *query track*
-* Select the track ending with ** - ready for analysis** as *reference GSuite*
+* Select the track ending with **- ready for analysis** as *reference GSuite*
 
 We want to rank the tracks in the GSuite by similarity to the query track (not compute any p-values).
 
