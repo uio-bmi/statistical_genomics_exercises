@@ -17,3 +17,12 @@ You will find all data you need in [this zip-file](data_files.zip). Download it 
 
 ### Your task
 Investigate whether any of the transcription factors seem to have a preference to bind to the boundaries of topologically associating domains.
+
+
+
+### Note
+If you use the Genomic Hyperbrowser and want to analyse multiple track, you will need to perform these steps in order to create a GSuite of tracks:
+* First upload all the tf_[name].bed files.
+* Create a Gsuite file by using the tool “Create a GSuite from datasets in your history” under the “Create a GSuite of genomic tracks” section in the menu.
+* Preprocess the Gsuite file by using the tool “Preprocess a GSuite for analysis” under the header “Customize a GSuite” in the menu.
+* The history element ending with “- ready for analysis” is the one you can use to perform the analysis.
