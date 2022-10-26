@@ -21,3 +21,8 @@ We will now take the Multiple Sclerosis analysis one step further by performing 
 
 * [Exercise using Bedtools](Exercise3-Bedtools.md)
 * [Exercise using The Genomic Hyperbrowser](Exercise3-Hyperbrowser.md)
+
+
+## Exercise 4: Open exercise
+This is an open exercise to practice more on everything you have learned.
+* [You will find the exercise here](Exercise4.md)
